@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Solar PV Panel in California</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+  <div style="height:100%;width:100%">
+    <div id="map" ></div>
+    <div id="capture"></div>
+    </div>
+    <script>
+
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: {lat: 36.9233, lng: -119.87}
+        });
+
+        // NOTE: This uses cross-domain XHR, and may not work on older browsers.
+        map.data.loadGeoJson('LonLat_final.json');
+
+        map.data.setStyle({
+          fillColor:'blue',
+          strokeWeight:1
+        })
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoMGVKJuwLb0o2HV5LL3eE0cJ0q_3SCz4&callback=initMap">
+    </script>
+  </body>
+</html>
